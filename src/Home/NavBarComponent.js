@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { withRouter, matchPath } from 'react-router';
 import classNames from 'classnames';
+import './styles.scss';
 
 class NavBar extends Component {
 
@@ -31,6 +32,7 @@ class NavBar extends Component {
                         </ul>
                     </div>
                 </div>
+                <button className="btn">Hello</button>
             </nav>
         );
     }
