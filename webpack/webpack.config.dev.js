@@ -13,10 +13,11 @@ module.exports = {
     path: resolve(__dirname, '..', 'dist/js'),
     publicPath: '/js/',
   },
-   devServer: {
+  devServer: {
     inline: true,
     contentBase: './dist',
-    port: 3000
+    port: 3000,
+    historyApiFallback: true,
   },
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
