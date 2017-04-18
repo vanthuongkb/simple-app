@@ -35,7 +35,7 @@ module.exports = {
         exclude: /node_modules/
       },
       {
-        test: /\.scss$/,
+        test: /\.(scss|css)$/,
         use: [{
           loader: "style-loader" // creates style nodes from JS strings
         }, {
@@ -43,7 +43,13 @@ module.exports = {
         }, {
           loader: "sass-loader" // compiles Sass to CSS
         }],
-        exclude: /node_modules/
+        //exclude: /node_modules/
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|svg).*$/,
+        use: [{
+          loader: "url-loader"
+        }]
       }
     ],
   }
