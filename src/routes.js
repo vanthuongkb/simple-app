@@ -1,18 +1,20 @@
-import Home from './Home/HomeComponent';
-import About from './Home/AboutComponent';
+import { getAsyncInjectors } from './utils/asyncInjectors';
+import asyncComponent from './utils/asyncComponent';
+// import Home from './Home/HomeComponent';
+// import About from './Home/AboutComponent';
 
 export default function createRoutes(store) {
     return [
         {
-            name: 'home',
+            name: 'Home',
             path: '/',
             exact: true,
-            component: Home
+            component: asyncComponent(() => import('./Home/HomeComponent').then(module => module.default), { name: 'Home' })
         },
         {
-            name: 'about',
+            name: 'About',
             path: '/about',
-            component: About
+            component: asyncComponent(() => import('./Home/AboutComponent').then(module => module.default), { name: 'About' })
         }
     ];
 }
