@@ -2,7 +2,7 @@ process.env.NODE_ENV = 'development';
 
 const { resolve } = require('path');
 const webpack = require('webpack');
-// const OfflinePlugin = require('offline-plugin');
+const WriteFilePlugin = require('write-file-webpack-plugin');
 
 module.exports = {
   devtool: 'source-map',
@@ -25,7 +25,7 @@ module.exports = {
       children: true,
       async: true,
     }),
-    // new OfflinePlugin()
+    new WriteFilePlugin()
   ],
   module: {
     rules: [
