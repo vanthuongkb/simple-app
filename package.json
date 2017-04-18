@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npm-run-all --parallel webpack-dev:watch",
-    "webpack-dev:watch": "webpack-dev-server --watch --config ./webpack/webpack.config.dev.js"
+    "dev": "npm-run-all --parallel webpack-dev:watch lint:watch",
+    "webpack-dev:watch": "webpack-dev-server --watch --config ./webpack/webpack.config.dev.js",
+    "lint": "esw src",
+    "lint:watch": "npm run lint -- --watch"
   },
   "author": "",
   "license": "ISC",
@@ -31,7 +33,10 @@
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "babel-preset-react-app": "^2.2.0",
     "eslint": "^3.19.0",
+    "eslint-config-react-app": "^0.6.2",
+    "eslint-plugin-flowtype": "^2.30.4",
     "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.3",
     "eslint-plugin-redux-saga": "^0.3.0",
     "eslint-watch": "^3.1.0",
