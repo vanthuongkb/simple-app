@@ -2,6 +2,7 @@ import 'babel-polyfill';
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'font-awesome/css/font-awesome.css'
+import './assets/css/main.scss'
 
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -16,7 +17,7 @@ import { ConnectedRouter } from 'react-router-redux';
 import createRoutes from './routes';
 import configureStore from './store';
 
-import NavBar from './Home/NavBarComponent';
+import NavBar from './components/NavBar';
 
 const initialState = {};
 const history = createHistory();

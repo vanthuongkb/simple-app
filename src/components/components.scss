@@ -1,0 +1,15 @@
+.module__title {
+  margin: 0;
+  height: 32px;
+  line-height: 32px;
+}
+
+.module__title--default {
+  font-size: 24px;
+  font-weight: 300;
+  color: $dark-color-3;
+}
+
+.solid-line {
+  clear: both;
+}

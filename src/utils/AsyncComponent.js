@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default (loader, collection) => (
+export default (loader, collections) => (
   class AsyncComponent extends React.Component {
     constructor(props) {
       super(props);
@@ -22,7 +22,7 @@ export default (loader, collection) => (
     render() {
       if (this.state.Component) {
         return (
-          <this.state.Component { ...this.props } { ...collection } />
+          <this.state.Component { ...this.props } { ...collections } />
         );
       }
 

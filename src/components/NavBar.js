@@ -2,15 +2,14 @@ import React, { Component } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { withRouter, matchPath } from 'react-router';
 import classNames from 'classnames';
-//import './styles.scss';
 
 class NavBar extends Component {
 
   render() {
-    const {location: {pathname}} = this.props;
+    const { location: { pathname } } = this.props;
     return (
       <nav className="navbar navbar-default">
-        <div className="container-fluid">
+        <div className="container">
           <div className="navbar-header">
             <button type="button" className="navbar-toggle collapsed" data-toggle="collapse"
                     data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -29,6 +28,9 @@ class NavBar extends Component {
               </li>
               <li className={classNames({['active']: location.pathname === '/about'})}>
                 <NavLink to="/about" activeClassName="active" exact>About</NavLink>
+              </li>
+              <li className={classNames({['active']: location.pathname === '/inventory'})}>
+                <NavLink to="/inventory" activeClassName="active" exact>Inventory</NavLink>
               </li>
             </ul>
           </div>
