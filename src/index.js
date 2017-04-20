@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'font-awesome/css/font-awesome.css'
 import './assets/css/main.scss'
 
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -18,9 +19,8 @@ import { ConnectedRouter } from 'react-router-redux';
 import createRoutes from './routes';
 import configureStore from './store';
 
-import NavBar from './components/NavBar';
-import Layout from './Views/Layout';
-import NotFound from './Views/NotFound';
+import Layout from './scenes/Layout';
+import NotFound from './scenes/NotFound';
 
 import { PAGE_NOT_FOUND } from './constants';
 
@@ -37,7 +37,11 @@ ReactDOM.render(
         <Route path="/" render={() => (
           <Layout>
             <Switch>
-              {routes.map((route, i) => (route.shouldRedirectTo ? <Redirect to={route.shouldRedirectTo} key={i} /> : <Route key={i} {...route} />))}
+              {
+                routes.map((route, i) => (route.shouldRedirectTo
+                  ? <Redirect to={route.shouldRedirectTo} key={i} />
+                  : <Route key={i} {...route} />))
+              }
             </Switch>
           </Layout>)
         } />

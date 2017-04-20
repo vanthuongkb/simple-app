@@ -1,9 +1,8 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form/immutable'
-
 import { Row, Col } from '../../../components/layout'
-
 import asyncValidate from './asyncValidate'
+import DropDown from "../../../components/form/DropDown";
 
 const renderField = ({ input, label, type, meta: { asyncValidating, touched, error } }) => (
   <div className={asyncValidating ? 'async-validating' : ''}>
@@ -13,8 +12,7 @@ const renderField = ({ input, label, type, meta: { asyncValidating, touched, err
 )
 
 const LocationForm = (props) => {
-    const { handleSubmit, submitting } = props;
-    console.log('handleSubmit', handleSubmit);
+    const { locations, onSelectLocation, handleSubmit, submitting } = props;
     return (
       <Row>
         <form className="" onSubmit={handleSubmit}>
@@ -25,8 +23,16 @@ const LocationForm = (props) => {
             </Row>
           </Col>
           <Col lg={4}>
+            <Row classNames="p-r-md">
+              <DropDown
+                label="Nested Under..."
+                items={locations}
+                onSelectItem={onSelectLocation}/>
+            </Row>
+          </Col>
+          <Col lg={4}>
             <Row>
-              <button type="submit" className="btn btn-sm btn-primary" disabled={submitting}>Add</button>
+              <button type="submit" className="btn btn-md btn-primary" disabled={submitting}>Add</button>
             </Row>
           </Col>
         </form>
@@ -39,7 +45,6 @@ export default reduxForm({
   validate: values => {
     const errors = {}
     const locationName = values.get('locationName')
-    console.log('locationName: ', locationName)
     if (!locationName || locationName.trim() === "") {
       errors.locationName = 'Required'
     }

@@ -8,25 +8,22 @@ export default function createRoutes(store) {
     {
       path: HOME_PAGE,
       exact: true,
-      component: asyncComponent(() => import('./Views/Home').then(module => module.default))
+      component: asyncComponent(() => import('./scenes/Home').then(module => module.default))
     },
     {
       path: ABOUT_PAGE,
       exact: true,
-      component: asyncComponent(() => import('./Views/About').then(module => module.default))
+      component: asyncComponent(() => import('./scenes/About').then(module => module.default))
     },
     {
-      name: 'Inventory',
       path: '/inventory',
-      component: asyncComponent(
-        () => import('./scenes/Inventory').then(module => module.default),
-        { name: 'Inventory' }
-      )
+      exact: true,
+      component: asyncComponent(() => import('./scenes/Inventory').then(module => module.default))
     },
     {
       path: '/*',
       exact: true,
-      component: asyncComponent(() => import('./Views/NotFound').then(module => module.default)),
+      component: asyncComponent(() => import('./scenes/NotFound').then(module => module.default)),
       shouldRedirectTo:'/404'
     }
   ];
