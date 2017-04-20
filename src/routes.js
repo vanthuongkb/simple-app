@@ -1,24 +1,19 @@
-import {getAsyncInjectors} from './utils/asyncInjectors';
+import { getAsyncInjectors } from './utils/asyncInjectors';
 import asyncComponent from './utils/asyncComponent';
-// import Home from './Home/Home';
-// import About from './Home/AboutComponent';
+
+import {HOME_PAGE, ABOUT_PAGE} from './constants';
 
 export default function createRoutes(store) {
   return [
     {
-      name: 'Home',
-      path: '/',
+      path: HOME_PAGE,
       exact: true,
-      component: asyncComponent(() =>
-          import('./scenes/Home').then(module => module.default),
-        { name: 'Home' })
+      component: asyncComponent(() => import('./Views/Home').then(module => module.default))
     },
     {
-      name: 'About',
-      path: '/about',
-      component: asyncComponent(
-        () => import('./scenes/About').then(module => module.default),
-        { name: 'About' })
+      path: ABOUT_PAGE,
+      exact: true,
+      component: asyncComponent(() => import('./Views/About').then(module => module.default))
     },
     {
       name: 'Inventory',
@@ -27,6 +22,12 @@ export default function createRoutes(store) {
         () => import('./scenes/Inventory').then(module => module.default),
         { name: 'Inventory' }
       )
+    },
+    {
+      path: '/*',
+      exact: true,
+      component: asyncComponent(() => import('./Views/NotFound').then(module => module.default)),
+      shouldRedirectTo:'/404'
     }
   ];
 }
